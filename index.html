@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Godot Námskeið - Valmynd</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .menu-container {
+            text-align: center;
+            border: 4px solid var(--fg-color);
+            padding: 4rem;
+            max-width: 800px;
+            background-color: #000;
+            z-index: 1;
+        }
+        .menu-btn-large {
+            display: block;
+            width: 100%;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            background: transparent;
+            border: 2px solid var(--fg-color);
+            color: var(--fg-color);
+            font-family: inherit;
+            font-size: 1.5rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: all 0.2s;
+        }
+        .menu-btn-large:hover {
+            background-color: var(--fg-color);
+            color: var(--bg-color);
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="crt-overlay"></div>
+    <div class="court-line"></div>
+
+    <div class="menu-container">
+        <h1>GODOT NÁMSKEIÐ</h1>
+        <h2>VELDU ÁFANGA</h2>
+        <br>
+        
+        <a href="intro.html" class="menu-btn-large">
+            1. KYNNING (INTRODUCTION)
+        </a>
+        
+        <a href="pong-guide.html" class="menu-btn-large">
+            2. PONG VERKEFNIÐ (GUIDE)
+        </a>
+
+        <div class="pong-demo" style="border: none; margin-top: 3rem; transform: scale(0.8);">
+            <div class="paddle left"></div>
+            <div class="paddle right"></div>
+            <div class="ball"></div>
+        </div>
+    </div>
+
+</body>
+</html>

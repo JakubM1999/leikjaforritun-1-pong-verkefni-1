@@ -1,0 +1,265 @@
+:root {
+    --bg-color: #000000;
+    --fg-color: #ffffff;
+    --accent-color: #ffffff;
+    --placeholder-bg: #111111;
+    --placeholder-border: #444444;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--fg-color);
+    font-family: 'Courier New', Courier, monospace;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Pong Court Decoration */
+.court-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--fg-color) 50%, transparent 50%);
+    background-size: 100% 40px;
+    transform: translateX(-50%);
+    z-index: 0;
+    opacity: 0.2;
+}
+
+/* Slide Container */
+#slides-container {
+    width: 95%; /* Increased width */
+    max-width: 1400px; /* Increased max-width */
+    height: 85vh; /* Slightly taller */
+    position: relative;
+    z-index: 1;
+    border: 4px solid var(--fg-color);
+    background-color: #000000;
+    padding: 2rem;
+}
+
+.slide {
+    display: none;
+    height: 100%;
+    flex-direction: column;
+    justify-content: flex-start; /* Changed from center to allow scrolling from top */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding-right: 1rem; /* Space for scrollbar */
+}
+
+/* Custom Scrollbar for Webkit */
+.slide::-webkit-scrollbar {
+    width: 8px;
+}
+
+.slide::-webkit-scrollbar-track {
+    background: var(--placeholder-bg);
+}
+
+.slide::-webkit-scrollbar-thumb {
+    background: var(--fg-color);
+}
+
+.slide.active {
+    display: flex;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Typography */
+h1 {
+    font-size: 4rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    text-align: center;
+    text-shadow: 2px 2px 0px #555;
+}
+
+h2 {
+    font-size: 2rem;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--fg-color);
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+p, li {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+ul {
+    list-style-type: square;
+    padding-left: 2rem;
+}
+
+a {
+    color: var(--fg-color);
+    text-decoration: underline;
+}
+
+a:hover {
+    background-color: var(--fg-color);
+    color: var(--bg-color);
+    text-decoration: none;
+}
+
+/* Layout Helpers */
+.centered {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+/* Placeholders */
+.placeholder-box {
+    border: 2px dashed var(--placeholder-border);
+    background-color: var(--placeholder-bg);
+    color: #888;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    min-height: 200px;
+    width: 100%;
+}
+
+.placeholder-box.large {
+    min-height: 400px;
+}
+
+/* Code blocks */
+pre {
+    background-color: var(--placeholder-bg);
+    border: 2px solid var(--placeholder-border);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+code {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: var(--placeholder-bg);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+}
+
+pre code {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+}
+
+/* Animations */
+.blink {
+    animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+    50% { opacity: 0; }
+}
+
+/* Pong Demo Visuals */
+.pong-demo {
+    position: relative;
+    width: 400px;
+    height: 200px;
+    border: 2px solid white;
+    margin: 2rem auto;
+}
+
+.paddle {
+    width: 10px;
+    height: 40px;
+    background-color: white;
+    position: absolute;
+    top: 80px;
+}
+
+.paddle.left { left: 10px; }
+.paddle.right { right: 10px; }
+.ball {
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    position: absolute;
+    left: 195px;
+    top: 95px;
+}
+
+/* Controls */
+.controls {
+    margin-top: 1rem;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    z-index: 2;
+}
+
+button, .menu-btn {
+    background: transparent;
+    border: 2px solid var(--fg-color);
+    color: var(--fg-color);
+    font-family: inherit;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    text-decoration: none; /* For the link */
+    display: inline-block;
+}
+
+button:hover, .menu-btn:hover {
+    background-color: var(--fg-color);
+    color: var(--bg-color);
+}
+
+.slide-indicator {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* CRT Effect (Subtle) */
+.crt-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 10;
+}
