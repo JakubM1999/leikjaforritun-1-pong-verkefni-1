@@ -4,8 +4,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextBtn = document.getElementById('next-btn');
     const indicator = document.querySelector('.slide-indicator');
     
+    // Create and append the static overlay
+    const staticOverlay = document.createElement('div');
+    staticOverlay.classList.add('tv-static');
+    document.body.appendChild(staticOverlay);
+
     let currentSlide = 0;
     const totalSlides = slides.length;
+    let isTransitioning = false;
 
     function updateSlide() {
         slides.forEach((slide, index) => {
@@ -16,30 +22,65 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         
-        // Update indicator (e.g., 01, 02)
-        indicator.textContent = String(currentSlide + 1).padStart(2, '0');
+        // Update indicator (e.g., 01 / 08)
+        if (indicator) {
+            const current = String(currentSlide + 1).padStart(2, '0');
+            const total = String(totalSlides).padStart(2, '0');
+            indicator.textContent = `${current} / ${total}`;
+        }
+
+        // Disable buttons at ends
+        if (prevBtn) prevBtn.disabled = (currentSlide === 0);
+        if (nextBtn) nextBtn.disabled = (currentSlide === totalSlides - 1);
+    }
+
+    function triggerTransition(callback) {
+        if (isTransitioning) return;
+        isTransitioning = true;
+
+        // Start Static & Distortion
+        staticOverlay.classList.add('active');
+        document.body.classList.add('distort-active');
+
+        // Wait for the "static" to fully obscure the screen (approx 150ms)
+        setTimeout(() => {
+            callback(); // Change the actual slide content here
+        }, 150);
+
+        // End transition after animation is done (300ms total)
+        setTimeout(() => {
+            staticOverlay.classList.remove('active');
+            document.body.classList.remove('distort-active');
+            isTransitioning = false;
+        }, 300);
     }
 
     function nextSlide() {
         if (currentSlide < totalSlides - 1) {
-            currentSlide++;
-            updateSlide();
+            triggerTransition(() => {
+                currentSlide++;
+                updateSlide();
+            });
         }
     }
 
     function prevSlide() {
         if (currentSlide > 0) {
-            currentSlide--;
-            updateSlide();
+            triggerTransition(() => {
+                currentSlide--;
+                updateSlide();
+            });
         }
     }
 
     // Event Listeners
-    nextBtn.addEventListener('click', nextSlide);
-    prevBtn.addEventListener('click', prevSlide);
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
 
     // Keyboard Navigation
     document.addEventListener('keydown', (e) => {
+        if (isTransitioning) return;
+        
         if (e.code === 'ArrowRight' || e.code === 'Space') {
             nextSlide();
         } else if (e.code === 'ArrowLeft') {

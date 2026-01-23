@@ -41,24 +41,100 @@
     <div class="court-line"></div>
 
     <div class="menu-container">
-        <h1>GODOT NÁMSKEIÐ</h1>
-        <h2>VELDU ÁFANGA</h2>
+        <h1>LEIKJAFORRITUN 1</h1>
+        <h2>FORR2GL05DU</h2>
         <br>
         
         <a href="intro.html" class="menu-btn-large">
-            1. KYNNING (INTRODUCTION)
+            1. KYNNING Á ÁFANGANUM OG GODOT
         </a>
         
         <a href="pong-guide.html" class="menu-btn-large">
-            2. PONG VERKEFNIÐ (GUIDE)
+            2. VERKEFNI 1 : PONG (VERKLÝSING)
         </a>
 
         <div class="pong-demo" style="border: none; margin-top: 3rem; transform: scale(0.8);">
-            <div class="paddle left"></div>
-            <div class="paddle right"></div>
-            <div class="ball"></div>
+            <div class="paddle left" id="p-left"></div>
+            <div class="paddle right" id="p-right"></div>
+            <div class="ball" id="anim-ball"></div>
         </div>
     </div>
 
+    <script>
+        const ball = document.getElementById('anim-ball');
+        const leftPaddle = document.getElementById('p-left');
+        const rightPaddle = document.getElementById('p-right');
+        
+        // Game state
+        let bx = 195, by = 95;
+        let bvx = 4, bvy = 2; // Ball velocity
+        let ly = 80, ry = 80; // Paddle Y positions
+        
+        // Dimensions
+        const width = 400;
+        const height = 200;
+        const pHeight = 40;
+        const bSize = 10;
+
+        function update() {
+            // Move Ball
+            bx += bvx;
+            by += bvy;
+
+            // Wall Collisions (Top/Bottom)
+            if (by <= 0 || by >= height - bSize) {
+                bvy *= -1;
+            }
+
+            // Paddle Collisions (Left/Right)
+            // Left Paddle Collision
+            if (bx <= 20 && bx >= 10 && by + bSize >= ly && by <= ly + pHeight) {
+                bvx = Math.abs(bvx); // Bounce right
+                bvy += (Math.random() - 0.5); // Add slight randomness
+            }
+            // Right Paddle Collision
+            if (bx >= 370 && bx <= 380 && by + bSize >= ry && by <= ry + pHeight) {
+                bvx = -Math.abs(bvx); // Bounce left
+                bvy += (Math.random() - 0.5); // Add slight randomness
+            }
+
+            // Cap vertical velocity to prevent it getting too crazy
+            bvy = Math.max(-5, Math.min(5, bvy));
+
+            // Reset if out of bounds
+            if (bx < 0 || bx > width) {
+                bx = width / 2;
+                by = height / 2;
+                bvx *= -1;
+                bvy = (Math.random() > 0.5 ? 2 : -2);
+            }
+
+            // AI Paddles
+            // Left Paddle: Slower, wider deadzone (Lazy)
+            const lCenter = ly + pHeight / 2;
+            if (lCenter < by - 15) ly += 2.0;
+            else if (lCenter > by + 15) ly -= 2.0;
+
+            // Right Paddle: Faster, tighter deadzone (Aggressive)
+            const rCenter = ry + pHeight / 2;
+            if (rCenter < by - 5) ry += 3.5;
+            else if (rCenter > by + 5) ry -= 3.5;
+
+            // Clamp positions
+            ly = Math.max(0, Math.min(height - pHeight, ly));
+            ry = Math.max(0, Math.min(height - pHeight, ry));
+
+            // Render
+            ball.style.left = bx + 'px';
+            ball.style.top = by + 'px';
+            leftPaddle.style.top = ly + 'px';
+            rightPaddle.style.top = ry + 'px';
+
+            requestAnimationFrame(update);
+        }
+
+        // Start animation
+        requestAnimationFrame(update);
+    </script>
 </body>
 </html>

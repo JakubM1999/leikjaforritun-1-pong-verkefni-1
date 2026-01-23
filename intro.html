@@ -12,14 +12,34 @@
     <div class="court-line"></div>
 
     <div id="slides-container">
-        <!-- Slide 1: Title -->
-        <section class="slide active" id="slide-1">
+        <!-- Slide 0: Title -->
+        <section class="slide active" id="slide-0">
             <div class="content centered">
-                <h1>LEIKJAÞRÓUN 101</h1>
-                <h2>KYNNING Á GODOT</h2>
-                <p>Sjálfstæð vinnustofa</p>
+                <h1>KYNNING Á ÁFANGANUM OG GODOT</h1>
                 <br>
-                <div class="blink">ÝTTU Á SPACE TIL AÐ BYRJA</div>
+                <div class="blink">ÝTTU Á SPACE TIL AÐ BYRJA</div> 
+            </div>
+        </section>
+
+        <!-- Slide 1: Course Plan -->
+        <section class="slide" id="slide-1">
+            <div class="content">
+                <h2>NÁMSÁÆTLUN (SYLLABUS)</h2>
+                <p>Hér er yfirlit yfir næstu vikur í áfanganum <strong>FORR2GL05DU</strong>.</p>
+                <br>
+                <ul>
+                    <li><strong>Vika 11:</strong> Leikur 1 - Pong (Inngangur & Godot grunnur).</li>
+                    <li><strong>Vika 12-13:</strong> Leikur 2 - Space Invaders/Platformer (Signals & Groups).</li>
+                    <li><strong>Vika 14:</strong> <em>Páskafrí.</em></li>
+                    <li><strong>Vika 15-17:</strong> Leikur 3 - 3D Ball Roller (3D, Eðlisfræði & UI).</li>
+                    <li><strong>Vika 18-20:</strong> Lokaverkefni (Sjálfstæður leikur).</li>
+                </ul>
+                <br>
+                <div class="centered">
+                    <a href="FORR2GL05DU_Námsáætlun V26 S2.pdf" target="_blank" class="menu-btn" style="border: 2px dashed var(--fg-color);">
+                        📥 SÆKJA NÁMSÁÆTLUN (PDF)
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -52,7 +72,7 @@
                         Farðu á <a href="https://godotengine.org/download" target="_blank">godotengine.org/download</a>. Þú munt sjá valmöguleika fyrir "Standard" og ".NET". Fyrir þetta námskeið skaltu sækja <strong>Standard Version</strong>.</p>
                         
                         <p><strong>2. Afþjappa (Extract):</strong><br>
-                        Það þarf ekki að setja Godot upp! Skráin sem þú sóttir er ZIP skrá. Afþjappaðu henni (extract) í örugga möppu (t.d. <code>Documents/Godot</code>).</p>
+                        Það þarf ekki að setja Godot upp! Skráin sem þú sóttir é ZIP skrá. Afþjappaðu henni (extract) í örugga möppu (t.d. <code>Documents/Godot</code>).</p>
                         
                         <p><strong>3. Keyra (Run):</strong><br>
                         Tvísmelltu á forritið sem þú varst að afþjappa (<code>Godot_v4.x...</code>). Þá opnast Project Manager.</p>
@@ -82,7 +102,7 @@
                         Þegar þú smellir á "Node" í Scene Dock, birtast eiginleikar þess hér. Þú getur breytt staðsetningu, litum, árekstralögum o.s.frv.</p>
                         
                         <p><strong>4. Viewport (Miðja):</strong><br>
-                        Þetta er vinnusvæðið þitt. Þú getur dregið og sleppt hlutum hingað til að raða upp leikjaheiminum þínum.</p>
+                        Þetta é vinnusvæðið þitt. Þú getur dregið og sleppt hlutum hingað til að raða upp leikjaheiminum þínum.</p>
                     </div>
                     <div class="placeholder-box large">
                         [PLACEHOLDER: SCREENSHOT OF GODOT EDITOR INTERFACE LABELED 1-4]
@@ -95,15 +115,15 @@
         <section class="slide" id="slide-5">
             <div class="content">
                 <h2>// GRUNNHUGTÖK: NODES & SCENES</h2>
-                <p>Uppbygging Godot er einstök. Að skilja þetta er lykillinn að því að ná tökum á vélinni.</p>
+                <p>Uppbygging Godot é einstök. Að skilja þetta é lykillinn að því að ná tökum á vélinni.</p>
                 
                 <br>
                 <h3>HVAÐ ER NODE?</h3>
-                <p><strong>Node</strong> er minnsta byggingareining leiksins þíns. Allt er node: "sprite", hljóð, myndavél eða takki. Nodes hafa eiginleika (eins og staðsetningu) og hegðun.</p>
+                <p><strong>Node</strong> é minnsta byggingareining leiksins þíns. Allt é node: "sprite", hljóð, myndavél eða takki. Nodes hafa eiginleika (eins og staðsetningu) og hegðun.</p>
                 
                 <br>
                 <h3>HVAÐ ER SCENE?</h3>
-                <p><strong>Scene</strong> er einfaldlega safn af nodes sem raðað er upp í tré. En hér er galdurinn: <strong>Hægt er að vista Scenes og nota þær inni í öðrum Scenes.</strong></p>
+                <p><strong>Scene</strong> é einfaldlega safn af nodes sem raðað é upp í tré. En hér é galdurinn: <strong>Hægt é að vista Scenes og nota þær inni í öðrum Scenes.</strong></p>
                 
                 <div class="grid-2">
                     <div>
@@ -123,49 +143,69 @@
             </div>
         </section>
 
-        <!-- Slide 6: The Project -->
+        <!-- Slide 6: GDScript -->
         <section class="slide" id="slide-6">
             <div class="content">
-                <h2>// VERKEFNIÐ: PONG</h2>
+                <h2>// GDSCRIPT</h2>
+                <p>Godot notar sitt eigið forritunarmál sem heitir GDScript.</p>
+                <br>
                 <div class="grid-2">
                     <div>
-                        <p>Við munum búa til fullbúinn Pong leik. Þetta verkefni fer yfir grunnþætti leikjaþróunar:</p>
-                        <br>
                         <ul>
-                            <li><strong>Input Handling:</strong> Hreyfa spaðana upp og niður.</li>
-                            <li><strong>Physics:</strong> Láta boltann skoppa af veggjum og spöðum.</li>
-                            <li><strong>UI:</strong> Sýna stigið.</li>
-                            <li><strong>Game Loop:</strong> Endurstilla boltann þegar einhver skorar.</li>
+                            <li><strong>Líkt Python:</strong> Notar inndrátt (indentation) og er mjög læsilegt.</li>
+                            <li><strong>Innbyggðar týpur:</strong> Hefur sérstakar breytur fyrir leiki eins og <code>Vector2</code> (staðsetning) og <code>Color</code>.</li>
+                            <li><strong>Hraðvirkt:</strong> Hannað sérstaklega til að tala við Godot vélina án tafa.</li>
                         </ul>
                     </div>
-                    <div class="pong-demo" style="margin: 0;">
-                        <div class="paddle left"></div>
-                        <div class="paddle right"></div>
-                        <div class="ball"></div>
+                    <div>
+                        <pre><code>extends Node2D
+
+var health = 100
+var player_name = "Hero"
+
+func _ready():
+    print("Welcome " + player_name)
+
+func take_damage(amount):
+    health -= amount
+    if health <= 0:
+        die()</code></pre>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Slide 7: Resources -->
+        <section class="slide" id="slide-7">
+            <div class="content">
+                <h2>// GÖGN OG AÐSTOÐ</h2>
+                <p>Þú munt festast. Það er hluti af vinnunni. Hér er hvernig þú leysir málið:</p>
                 <br>
-                <p class="centered" style="border: 1px solid white; padding: 1rem;">
-                    <strong>MARKMIÐ:</strong> Í lok þessarar vinnustofu muntu hafa spilanlegan leik sem þú getur flutt út (export) og deilt.
+                <ul>
+                    <li><strong>Official Documentation:</strong> <a href="https://docs.godotengine.org" target="_blank">docs.godotengine.org</a>. Þetta er "biblían" okkar.</li>
+                    <li><strong>Ctrl + Smellur:</strong> Í Godot geturðu haldið inni Ctrl og smellt á hvaða fall/breytu sem er til að opna hjálpina.</li>
+                    <li><strong>YouTube:</strong> Rásir eins og <em>Brackeys</em>, <em>HeartBeast</em> og <em>GDQuest</em> eru með frábært efni.</li>
+                    <li><strong>Spurðu Google:</strong> "How to move 2D character Godot 4".</li>
+                </ul>
+                <br>
+                <p class="centered" style="margin-top: 2rem;">
+                    <em>"Að kunna að leita að svörum er mikilvægasti hæfileiki forritara."</em>
                 </p>
             </div>
         </section>
 
-        <!-- Slide 7: Ready -->
-        <section class="slide" id="slide-7">
+        <!-- Slide 8: Conclusion -->
+        <section class="slide" id="slide-8">
             <div class="content centered">
-                <h2>READY PLAYER ONE?</h2>
-                <p>Það er kominn tími til að ræsa vélina.</p>
+                <h2>NÆSTU SKREF</h2>
+                <p>Nú hefur þú yfirsýn yfir Godot.</p>
+                <p>Ekki vera hrædd(ur) við að gera mistök. Það er besta leiðin til að læra.</p>
                 <br>
-                <ol style="text-align: left; display: inline-block;">
-                    <li>Opnaðu Godot.</li>
-                    <li>Smelltu á <strong>"New Project"</strong>.</li>
-                    <li>Nefndu hann "Pong".</li>
-                    <li>Veldu <strong>"Mobile"</strong> eða <strong>"Forward+"</strong> renderer.</li>
-                    <li>Smelltu á <strong>"Create & Edit"</strong>.</li>
-                </ol>
-                <br><br>
-                <p class="blink">GANGLI ÞÉR VEL.</p>
+                <p>Smelltu á takkann hér að neðan til að fara í aðalvalmyndina og byrja á <strong>Pong</strong> verkefninu.</p>
+                <br>
+                <a href="index.html" class="menu-btn" style="padding: 1rem 3rem; font-size: 1.5rem; border: 2px solid white;">
+                    AFTUR Í VALMYND
+                </a>
             </div>
         </section>
     </div>
