@@ -90,4 +90,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial Display
     updateSlide();
+
+    // --- CAROUSEL LOGIC (Multi-Instance) ---
+    const carousels = document.querySelectorAll('.carousel-wrapper');
+
+    carousels.forEach(carousel => {
+        const cItems = carousel.querySelectorAll('.carousel-item');
+        const cToggles = carousel.querySelectorAll('.carousel-toggle');
+        let cIndex = 0;
+
+        function updateCarousel() {
+            if (cItems.length === 0) return;
+
+            // Update Items
+            cItems.forEach((item, index) => {
+                const vid = item.querySelector('video');
+                if (index === cIndex) {
+                    item.classList.add('active');
+                    if(vid) vid.play();
+                } else {
+                    item.classList.remove('active');
+                    if(vid) vid.pause();
+                }
+            });
+
+            // Update Toggles
+            cToggles.forEach((btn, index) => {
+                if (index === cIndex) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        }
+
+        // Attach listeners to toggles
+        cToggles.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const idx = btn.getAttribute('data-index');
+                if (idx !== null) {
+                    cIndex = parseInt(idx);
+                    updateCarousel();
+                }
+            });
+        });
+
+        // Init this carousel
+        if (cItems.length > 0) {
+            updateCarousel();
+        }
+    });
 });

@@ -34,12 +34,8 @@ body::after {
     left: 0;
     bottom: 0;
     right: 0;
-    /* Vignette + Scanlines + Reflection */
-    background: 
-        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
-        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03)),
-        radial-gradient(circle, rgba(0,0,0,0) 50%, rgba(0,0,0,0.6) 100%);
-    background-size: 100% 4px, 3px 100%, 100% 100%;
+    /* Vignette only - Scanlines moved to #slides-container::after */
+    background: radial-gradient(circle, rgba(0,0,0,0) 50%, rgba(0,0,0,0.6) 100%);
     pointer-events: none;
     z-index: 100;
 }
@@ -88,6 +84,47 @@ body::before {
         inset 0 0 100px rgba(0,0,0,0.8),
         0 0 50px rgba(0,0,0,1);
     transform: rotateX(2deg) scale(0.98); /* Subtle 3D "bulge" look */
+}
+
+/* Scanlines for Slide Content (Text) */
+#slides-container::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: 20px;
+    background: 
+        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+    background-size: 100% 4px, 3px 100%;
+    pointer-events: none;
+    z-index: 50; /* Above text, below video (which is z-120) */
+}
+
+/* Scanlines for Controls (Buttons) */
+.controls {
+    margin-top: 1rem;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    z-index: 2;
+    position: relative; /* Create context for ::after */
+}
+
+.controls::after {
+    content: " ";
+    position: absolute;
+    top: -10px; left: -10px; right: -10px; bottom: -10px; /* Slight bleed */
+    background: 
+        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+    background-size: 100% 4px, 3px 100%;
+    pointer-events: none;
+    z-index: 10;
+    border-radius: 10px;
 }
 
 .slide {
@@ -194,52 +231,39 @@ a:hover {
     min-height: 400px;
 }
 
-/* Animations */
-.blink {
-    animation: blinker 1s linear infinite;
-}
-
-@keyframes blinker {
-    50% { opacity: 0; }
-}
-
-/* Pong Demo Visuals */
-.pong-demo {
+/* Video specific CRT softening */
+.video-container {
     position: relative;
-    width: 400px;
-    height: 200px;
-    border: 2px solid white;
+    z-index: 120; /* Lift above everything (vignette is 100, reflection is 101) */
+    border: 2px solid var(--fg-color);
+    line-height: 0;
+    background-color: #000;
+    max-width: 1100px;
     margin: 2rem auto;
 }
 
-.paddle {
-    width: 10px;
-    height: 40px;
-    background-color: white;
+.video-container video {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 70vh;
+}
+
+/* Subtler scanlines for video legibility */
+.video-container::after {
+    content: "";
     position: absolute;
-    top: 80px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(200, 200, 200, 0) 50%, rgba(200, 200, 200, 0.02) 50%);
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 1;
 }
 
-.paddle.left { left: 10px; }
-.paddle.right { right: 10px; }
-.ball {
-    width: 10px;
-    height: 10px;
-    background-color: white;
-    position: absolute;
-    left: 195px;
-    top: 95px;
-}
-
-/* Controls */
-.controls {
-    margin-top: 1rem;
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-    z-index: 2;
-}
-
+/* Main Button Styles (Restored) */
 button, .menu-btn, .menu-btn-large {
     background: transparent;
     border: 2px solid var(--fg-color);
@@ -277,6 +301,126 @@ button:disabled:hover {
     font-size: 1.5rem;
 }
 
+/* Carousel Styles */
+.carousel-wrapper {
+    width: 100%;
+    max-width: 1100px; /* Match Slide 3 Video Container */
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the buttons */
+    gap: 1.5rem;
+}
+
+.carousel-view {
+    width: 100%;
+    position: relative;
+    border: 2px solid var(--fg-color);
+    background: #000;
+    z-index: 120;
+    /* Allow content to define height, but cap it like the video */
+    height: auto;
+}
+
+/* Retro Toggle Switch */
+.carousel-nav {
+    display: inline-flex;
+    border: 2px solid var(--fg-color);
+    border-radius: 0; /* Square edges */
+    overflow: hidden;
+    background-color: #000;
+    z-index: 125;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+.carousel-nav::after {
+    content: " ";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: 
+        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+    background-size: 100% 4px, 3px 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.carousel-toggle {
+    background: transparent;
+    color: var(--fg-color);
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 0.8rem 2rem;
+    border: none;
+    transition: all 0.2s;
+    text-transform: uppercase;
+}
+
+.carousel-toggle:not(:last-child) {
+    border-right: 2px solid var(--fg-color);
+}
+
+.carousel-toggle:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+.carousel-toggle.active {
+    background-color: var(--fg-color);
+    color: #000;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+.carousel-item {
+    display: none;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-item.active {
+    display: flex;
+}
+
+/* Animations */
+.blink {
+    animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+    50% { opacity: 0; }
+}
+
+/* Pong Demo Visuals */
+.pong-demo {
+    position: relative;
+    width: 400px;
+    height: 200px;
+    border: 2px solid white;
+    margin: 2rem auto;
+}
+
+.paddle {
+    width: 10px;
+    height: 40px;
+    background-color: white;
+    position: absolute;
+    top: 80px;
+}
+
+.paddle.left { left: 10px; }
+.paddle.right { right: 10px; }
+.ball {
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    position: absolute;
+    left: 195px;
+    top: 95px;
+}
+
 .menu-container {
     text-align: center;
     border: 4px solid var(--fg-color);
@@ -285,6 +429,18 @@ button:disabled:hover {
     background-color: #000;
     z-index: 5;
     position: relative;
+}
+
+.menu-container::after {
+    content: " ";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: 
+        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+    background-size: 100% 4px, 3px 100%;
+    pointer-events: none;
+    z-index: 10;
 }
 
 .slide-indicator {
