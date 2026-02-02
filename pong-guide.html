@@ -15,7 +15,7 @@
         <!-- Slide 1: Start -->
         <section class="slide active" id="slide-1">
             <div class="content centered">
-                <h1>PONG: SKREF FYRIR SKREF</h1>
+                <h1>VERKEFNI 1: PONG</h1>
                 <h2>LEIÐBEININGAR</h2>
                 <p>Hér munum við byggja leikinn frá grunni.</p>
                 <br>
@@ -31,13 +31,13 @@
                 <br>
                 <ol>
                     <li>Opnaðu Godot.</li>
-                    <li>Smelltu á <strong>New Project</strong>.</li>
+                    <li>Smelltu á <strong><img src="images/icons/Add.svg"> Create</strong>.</li>
                     <li>Veldu staðsetningu (Browse) og búðu til möppu sem heitir "Pong".</li>
                     <li>Veldu <strong>Mobile</strong> renderer (það er léttara fyrir 2D leiki).</li>
-                    <li>Smelltu á <strong>Create & Edit</strong>.</li>
+                    <li>Smelltu á <strong><img src="images/icons/Edit.svg">Create & Edit</strong>.</li>
                 </ol>
-                <div class="placeholder-box">
-                    [PLACEHOLDER: SCREENSHOT OF PROJECT CREATION WINDOW]
+                <div class="video-container" style="width: 100%; margin: 2rem auto 0;">
+                    <video autoplay muted loop src="videos/verklysing/slide1.mp4"></video>
                 </div>
             </div>
         </section>
@@ -49,13 +49,13 @@
                 <p>Pong er spilaður á ákveðnu vallarsvæði. Stillum upplausnina.</p>
                 <br>
                 <ol>
-                    <li>Farðu í <strong>Project -> Project Settings</strong> í efstu valmyndinni.</li>
+                    <li>Farðu í <strong><img src="images/icons/Tools.svg">Project -> Project Settings</strong> í efstu valmyndinni.</li>
                     <li>Í General flipanum, leitaðu að <strong>Display -> Window</strong>.</li>
                     <li>Stilltu <strong>Viewport Width</strong> á <code>1152</code> og <strong>Viewport Height</strong> á <code>648</code> (eða þínar tölur).</li>
                     <li>Skrunaðu niður í <strong>Stretch</strong> og stilltu <strong>Mode</strong> á <code>canvas_items</code>.</li>
                 </ol>
-                <div class="placeholder-box">
-                    [PLACEHOLDER: SCREENSHOT OF PROJECT SETTINGS WINDOW]
+                <div class="video-container" style="width: 100%; margin: 2rem auto 0;">
+                    <video autoplay muted loop src="videos/verklysing/slide2.mp4"></video>
                 </div>
             </div>
         </section>
@@ -67,13 +67,13 @@
                 <p>Búum til aðal sviðið þar sem leikurinn fer fram.</p>
                 <br>
                 <ol>
-                    <li>Í Scene Dock (vinstra megin), smelltu á <strong>2D Scene</strong> hnappinn. Þetta býr til <code>Node2D</code> sem rót.</li>
-                    <li>Tvísmelltu á nafnið <code>Node2D</code> og endurnefndu það í <code>Main</code>.</li>
+                    <li>Í Scene Dock (vinstra megin), smelltu á <strong><img src="images/icons/Node2D.svg">2D Scene</strong> hnappinn. Þetta býr til <img src="images/icons/Node2D.svg" class="icon-inline"><code>Node2D</code> sem rót.</li>
+                    <li>Tvísmelltu á nafnið <img src="images/icons/Node2D.svg" class="icon-inline"><code>Node2D</code> og endurnefndu það í <code>Main</code>.</li>
                     <li>Ýttu á <code>Ctrl + S</code> (eða Cmd + S) til að vista.</li>
                     <li>Vistaðu skrána sem <code>main.tscn</code>.</li>
                 </ol>
-                <div class="placeholder-box">
-                    [PLACEHOLDER: SCREENSHOT OF SCENE DOCK WITH 'MAIN' NODE]
+                <div class="video-container" style="width: 100%; margin: 2rem auto 0;">
+                    <video autoplay muted loop src="videos/verklysing/slide3.mp4"></video>
                 </div>
             </div>
         </section>
@@ -86,13 +86,13 @@
                 <br>
                 <ol>
                     <li>Smelltu á <code>Main</code> node-ið svo það sé valið.</li>
-                    <li>Smelltu á <strong>+</strong> takkann (Add Child Node) eða ýttu á <code>Ctrl + A</code>.</li>
-                    <li>Leitaðu að <code>ColorRect</code> og búðu það til.</li>
+                    <li>Smelltu á <strong><img src="images/icons/Add.svg"></strong> takkann (Add Child Node) eða ýttu á <code>Ctrl + A</code>.</li>
+                    <li>Leitaðu að <img src="images/icons/ColorRect.svg" class="icon-inline"><code>ColorRect</code> og búðu það til.</li>
                     <li>Í Inspector (hægra megin), veldu <strong>Color</strong> og settu það í svartan.</li>
                     <li>Dragðu hornin á kassanum í Viewport svo hann þeki allan skjáinn (eða notaðu Anchor preset: Full Rect).</li>
                 </ol>
-                <div class="placeholder-box">
-                    [PLACEHOLDER: SCREENSHOT OF COLORRECT IN VIEWPORT]
+                <div class="video-container" style="width: 100%; margin: 2rem auto 0;">
+                    <video autoplay muted loop src="videos/verklysing/slide4.mp4"></video>
                 </div>
             </div>
         </section>
@@ -104,11 +104,14 @@
                 <p>Nú þurfum við leikmann. Við gerum nýtt Scene fyrir hann.</p>
                 <br>
                 <ol>
-                    <li>Smelltu á <strong>+</strong> flipann við hliðina á "Main" flipanum fyrir ofan Viewport til að opna nýtt tómt Scene.</li>
-                    <li>Veldu <strong>Other Node</strong> og leitaðu að <code>CharacterBody2D</code> (fyrir Godot 4) eða <code>KinematicBody2D</code> (Godot 3). Við notum Godot 4: <strong>CharacterBody2D</strong>.</li>
+                    <li>Smelltu á <strong><img src="images/icons/Add.svg"></strong> flipann við hliðina á "Main" flipanum fyrir ofan Viewport til að opna nýtt tómt Scene.</li>
+                    <li>Veldu <strong><img src="images/icons/Node.svg">Other Node</strong> og leitaðu að <img src="images/icons/CharacterBody2D.svg" class="icon-inline"><code>CharacterBody2D</code> (fyrir Godot 4) eða <code>KinematicBody2D</code> (Godot 3). Við notum Godot 4: <strong><img src="images/icons/CharacterBody2D.svg">CharacterBody2D</strong>.</li>
                     <li>Nefndu það <code>Paddle</code>.</li>
-                    <li>Bættu við tveimur börnum (children): <code>ColorRect</code> (fyrir útlitið) og <code>CollisionShape2D</code> (fyrir eðlisfræðina).</li>
+                    <li>Bættu við tveimur börnum (children): <img src="images/icons/ColorRect.svg" class="icon-inline"><code>ColorRect</code> (fyrir útlitið) og <img src="images/icons/CollisionShape2D.svg" class="icon-inline"><code>CollisionShape2D</code> (fyrir eðlisfræðina).</li>
                 </ol>
+                <div class="video-container" style="width: 100%; margin: 2rem auto 0;">
+                    <video autoplay muted loop src="videos/verklysing/slide5.mp4"></video>
+                </div>
             </div>
         </section>
 
@@ -119,15 +122,15 @@
                 <p>Látum spaðann líta út eins og spaða.</p>
                 <br>
                 <ol>
-                    <li>Veldu <code>ColorRect</code> í Paddle scenu.</li>
+                    <li>Veldu <img src="images/icons/ColorRect.svg" class="icon-inline"><code>ColorRect</code> í Paddle scenu.</li>
                     <li>Í Inspector, stilltu stærðina (Size) á <code>20</code> x <code>120</code>.</li>
                     <li>Stilltu stöðuna (Position) á <code>-10</code> x <code>-60</code> (svo hann sé miðjaður út frá rótinni).</li>
-                    <li>Veldu <code>CollisionShape2D</code>. Það mun vara við því að vanti lögun (Shape).</li>
+                    <li>Veldu <img src="images/icons/CollisionShape2D.svg" class="icon-inline"><code>CollisionShape2D</code>. Það mun vara við því að vanti lögun (Shape).</li>
                     <li>Í Inspector, við hliðina á Shape, veldu <strong>New RectangleShape2D</strong>.</li>
                     <li>Stilltu stærðina á CollisionShape þannig að hún passi við ColorRect.</li>
                 </ol>
-                <div class="placeholder-box">
-                    [PLACEHOLDER: SCREENSHOT OF PADDLE SETUP]
+                <div class="video-container" style="width: 100%; margin: 2rem auto 0;">
+                    <video autoplay muted loop src="videos/verklysing/slide6.mp4"></video>
                 </div>
             </div>
         </section>
@@ -139,17 +142,17 @@
                 <p>Við þurfum að skilgreina hvaða takkar hreyfa spaðann. Við gerum það í Input Map.</p>
                 <br>
                 <ol>
-                    <li>Farðu í <strong>Project -> Project Settings</strong>.</li>
+                    <li>Farðu í <strong><img src="images/icons/Tools.svg">Project -> Project Settings</strong>.</li>
                     <li>Veldu <strong>Input Map</strong> flipann.</li>
-                    <li>Efst, skrifaðu <code>move_up</code> í "Add New Action" og smelltu á <strong>Add</strong>.</li>
+                    <li>Efst, skrifaðu <code>move_up</code> í "Add New Action" og smelltu á <strong><img src="images/icons/Add.svg">Add</strong>.</li>
                     <li>Endurtaktu fyrir <code>move_down</code>.</li>
-                    <li>Smelltu á <strong>+</strong> takkann við hliðina á nýju aðgerðunum til að bæta við takka.</li>
+                    <li>Smelltu á <strong><img src="images/icons/Add.svg"></strong> takkann við hliðina á nýju aðgerðunum til að bæta við takka.</li>
                     <li>Fyrir <code>move_up</code>, veldu "Physical Key" og ýttu á <strong>W</strong> takkann.</li>
                     <li>Fyrir <code>move_down</code>, veldu "Physical Key" og ýttu á <strong>S</strong> takkann.</li>
                 </ol>
                 <p>Við munum nota þessar aðgerðir í kóðanum til að hreyfa leikmann 1. Hægt er að bæta við fleiri tökkum (eins og örvunum) fyrir leikmann 2 síðar.</p>
-                <div class="placeholder-box">
-                    [PLACEHOLDER: SCREENSHOT OF INPUT MAP SETTINGS]
+                <div class="video-container" style="width: 100%; margin: 2rem auto 0;">
+                    <video autoplay muted loop src="videos/verklysing/slide7.mp4"></video>
                 </div>
             </div>
         </section>
@@ -161,9 +164,9 @@
                 <p>Nú er kominn tími til að láta spaðann hreyfast.</p>
                 <br>
                 <ol>
-                    <li>Hægrismelltu á <code>Paddle</code> node-ið í Scene Dock og veldu <strong>Attach Script</strong>.</li>
+                    <li>Hægrismelltu á <code>Paddle</code> node-ið í Scene Dock og veldu <strong><img src="images/icons/Script.svg">Attach Script</strong>.</li>
                     <li>Gakktu úr skugga um að Template sé "Default".</li>
-                    <li>Smelltu á <strong>Create</strong>.</li>
+                    <li>Smelltu á <strong><img src="images/icons/Add.svg">Create</strong>.</li>
                 </ol>
                 <p>Skiptu út öllum kóðanum í skriftunni með eftirfarandi:</p>
                 <pre><code>extends CharacterBody2D
@@ -180,7 +183,9 @@ func _physics_process(delta):
     # Hreyfa leikmanninn
     move_and_slide()
 </code></pre>
-                <p>Farðu í "Main" scene, settu (dragðu) "paddle.tscn" inn á sviðið og keyrðu leikinn (F5). Þú ættir nú að geta hreyft spaðann með W og S!</p>
+                <div class="video-container" style="width: 100%; margin: 2rem auto 0;">
+                    <video autoplay muted loop src="videos/verklysing/slide8.mp4"></video>
+                </div>
             </div>
         </section>
 
@@ -191,14 +196,14 @@ func _physics_process(delta):
                 <p>Enginn Pong án bolta. Búum til nýtt Scene.</p>
                 <br>
                 <ol>
-                    <li>Búðu til nýtt Scene. Rótin (Root Node) skal vera <code>CharacterBody2D</code>.</li>
+                    <li>Búðu til nýtt Scene. Rótin (Root Node) skal vera <img src="images/icons/CharacterBody2D.svg" class="icon-inline"><code>CharacterBody2D</code>.</li>
                     <li>Nefndu það <code>Ball</code>.</li>
-                    <li>Bættu við <code>ColorRect</code> (stærð 10x10).</li>
-                    <li>Bættu við <code>CollisionShape2D</code> (RectangleShape2D, 10x10).</li>
+                    <li>Bættu við <img src="images/icons/ColorRect.svg" class="icon-inline"><code>ColorRect</code> (stærð 10x10).</li>
+                    <li>Bættu við <img src="images/icons/CollisionShape2D.svg" class="icon-inline"><code>CollisionShape2D</code> (RectangleShape2D, 10x10).</li>
                     <li>Vistaðu sem <code>ball.tscn</code>.</li>
                 </ol>
-                <div class="placeholder-box">
-                    [PLACEHOLDER: SCREENSHOT OF BALL SCENE TREE AND VISUAL]
+                <div class="video-container" style="width: 100%; margin: 2rem auto 0;">
+                    <video autoplay muted loop src="videos/verklysing/slide9.mp4"></video>
                 </div>
             </div>
         </section>
@@ -229,6 +234,9 @@ func _physics_process(delta):
         # Ef árekstur verður, látum boltann skoppa (bounce)
         direction = direction.bounce(collision.get_normal())
 </code></pre>
+                <div class="video-container" style="width: 100%; margin: 2rem auto 0;">
+                    <video autoplay muted loop src="videos/verklysing/slide10.mp4"></video>
+                </div>
             </div>
         </section>
 
@@ -241,12 +249,12 @@ func _physics_process(delta):
                 <ol>
                     <li>Opnaðu <code>Main</code> scene.</li>
                     <li>Bættu við <code>StaticBody2D</code> node og nefndu það <code>Walls</code>.</li>
-                    <li>Bættu við tveimur <code>CollisionShape2D</code> börnum við Walls.</li>
+                    <li>Bættu við tveimur <img src="images/icons/CollisionShape2D.svg" class="icon-inline"><code>CollisionShape2D</code> börnum við Walls.</li>
                     <li>Fyrir þann fyrri: Notaðu <code>WorldBoundaryShape2D</code>. Snúðu honum þannig að línan snúi NIÐUR (Normal 0, 1) og staðsettu efst á skjánum.</li>
                     <li>Fyrir þann seinni: Notaðu <code>WorldBoundaryShape2D</code>. Snúðu honum þannig að línan snúi UPP (Normal 0, -1) og staðsettu neðst á skjánum.</li>
                 </ol>
-                <div class="placeholder-box">
-                    [PLACEHOLDER: SCREENSHOT OF WALL COLLIDERS IN MAIN SCENE]
+                <div class="video-container" style="width: 100%; margin: 2rem auto 0;">
+                    <video autoplay muted loop src="videos/verklysing/slide11.mp4"></video>
                 </div>
             </div>
         </section>
@@ -258,9 +266,9 @@ func _physics_process(delta):
                 <p>Við þurfum andstæðing. Við getum endurnýtt spaðann en breytt kóðanum.</p>
                 <br>
                 <ol>
-                    <li>Í FileSystem, hægrismelltu á <code>paddle.tscn</code> og veldu <strong>Duplicate</strong>. Nefndu það <code>enemy.tscn</code>.</li>
+                    <li>Í FileSystem, hægrismelltu á <code>paddle.tscn</code> og veldu <strong><img src="images/icons/Duplicate.svg">Duplicate</strong>. Nefndu það <code>enemy.tscn</code>.</li>
                     <li>Opnaðu <code>enemy.tscn</code>.</li>
-                    <li>Hægrismelltu á rótina (Node) og veldu <strong>Detach Script</strong> (til að fjarlægja stýringuna).</li>
+                    <li>Hægrismelltu á rótina (Node) og veldu <strong><img src="images/icons/ScriptRemove.svg">Detach Script</strong> (til að fjarlægja stýringuna).</li>
                     <li>Bættu við nýrri skriftu:</li>
                 </ol>
                 <pre><code>extends CharacterBody2D
@@ -279,6 +287,9 @@ func _physics_process(delta):
         velocity.y = direction.y * speed
         move_and_slide()
 </code></pre>
+                <div class="video-container" style="width: 100%; margin: 2rem auto 0;">
+                    <video autoplay muted loop src="videos/verklysing/slide12.mp4"></video>
+                </div>
             </div>
         </section>
 
@@ -293,11 +304,11 @@ func _physics_process(delta):
                     <li>Dragðu <code>Ball.tscn</code> inn á miðjan skjáinn.</li>
                     <li>Dragðu <code>Paddle.tscn</code> vinstra megin.</li>
                     <li>Dragðu <code>Enemy.tscn</code> hægra megin.</li>
-                    <li>Ýttu á <strong>F5</strong> til að spila!</li>
+                    <li>Ýttu á <strong><img src="images/icons/MainPlay.svg">F5</strong> til að spila!</li>
                 </ol>
                 <p>Boltinn ætti nú að skoppa af veggjum og báðum spöðum.</p>
-                <div class="placeholder-box">
-                    [PLACEHOLDER: SCREENSHOT OF FINAL GAMEPLAY]
+                <div class="video-container" style="width: 100%; margin: 2rem auto 0;">
+                    <video autoplay muted loop src="videos/verklysing/slide13.mp4"></video>
                 </div>
             </div>
         </section>
@@ -313,8 +324,8 @@ func _physics_process(delta):
                     <li>Ef <code>Ball.position.x < 0</code>: Boltinn fór út vinstra megin -> <strong>Hægri (Enemy) skorar</strong>.</li>
                     <li>Ef <code>Ball.position.x > 1152</code>: Boltinn fór út hægra megin -> <strong>Vinstri (Player) skorar</strong>.</li>
                 </ul>
-                <div class="placeholder-box">
-                    [PLACEHOLDER: DIAGRAM SHOWING X < 0 AND X > 1152 ZONES]
+                <div class="video-container" style="width: 100%; margin: 2rem auto 0;">
+                    <img src="videos/verklysing/slide14.png" alt="Scoring Zones" style="width: 100%; height: auto; display: block;">
                 </div>
             </div>
         </section>
@@ -326,11 +337,14 @@ func _physics_process(delta):
                 <p>Sýnum stigin.</p>
                 <br>
                 <ol>
-                    <li>Í <code>Main</code> scene, bættu við <code>CanvasLayer</code> node (þetta lætur textann fljóta ofan á öllu).</li>
-                    <li>Bættu við <code>Label</code> node undir CanvasLayer.</li>
+                    <li>Í <code>Main</code> scene, bættu við <img src="images/icons/CanvasLayer.svg" class="icon-inline"><code>CanvasLayer</code> node (þetta lætur textann fljóta ofan á öllu).</li>
+                    <li>Bættu við <strong><img src="images/icons/Label.svg">Label</strong> node undir CanvasLayer.</li>
                     <li>Skrifaðu "0 - 0" í Text reitinn í Inspector.</li>
                     <li>Í <strong>Label Settings</strong>, stækkaðu letrið (Font Size) í t.d. 64px og settu það efst fyrir miðju.</li>
                 </ol>
+                <div class="video-container" style="width: 100%; margin: 2rem auto 0;">
+                    <video autoplay muted loop src="videos/verklysing/slide15.mp4"></video>
+                </div>
             </div>
         </section>
 
@@ -371,6 +385,9 @@ func reset_ball():
     $Ball.direction.x = [1, -1].pick_random()
     $Ball.direction.y = [1, -1].pick_random()
 </code></pre>
+                <div class="video-container" style="width: 100%; margin: 2rem auto 0;">
+                    <video autoplay muted loop src="videos/verklysing/slide16.mp4"></video>
+                </div>
             </div>
         </section>
 
@@ -387,27 +404,33 @@ func reset_ball():
                     <li>Skilaðu <code>.zip</code> skránni inn á Innu.</li>
                 </ol>
                 <p><em>Athugið: Kennari þarf að sjá kóðann þinn til að gefa einkunn, þess vegna skillum við verkefnamöppunni en ekki útfluttum leik.</em></p>
-                <div class="placeholder-box">
-                    [PLACEHOLDER: SCREENSHOT OF ZIPPING A FOLDER]
-                </div>
             </div>
         </section>
 
         <!-- Slide 19: Export -->
         <section class="slide" id="slide-19">
-            <div class="content">
-                <h2>BONUS: DEILA LEIKNUM (EXPORT)</h2>
-                <p>Viltu sýna vinum þínum leikinn? Hér er hvernig þú býrð til vefútgáfu.</p>
-                <br>
-                <ol>
-                    <li>Farðu í <strong>Project -> Export</strong>.</li>
-                    <li>Smelltu á <strong>Add...</strong> og veldu <strong>Web</strong> (fyrir vafra) eða <strong>Windows/Mac</strong>.</li>
-                    <li>Ef þú færð villumeldingu um "Export Templates", smelltu á <strong>Manage Export Templates</strong> og sæktu þau.</li>
-                    <li>Smelltu á <strong>Export Project</strong>.</li>
-                    <li>Vistaðu <code>index.html</code> (fyrir vef) í nýja möppu.</li>
+            <div class="content" style="line-height: 1.8;">
+                <h2 style="margin-bottom: 1.2rem;">BONUS: GERA LEIKINN SKEMMTILEGRI</h2>
+                <p style="margin-bottom: 1rem;">Nú þegar þú ert með grunninn, af hverju ekki að bæta við smá "safa" (juice)?</p>
+                <ul style="margin-bottom: 2rem; padding-left: 2rem;">
+                    <li style="margin-bottom: 0.5rem;"><strong>Hljóð:</strong> Bættu við <code>AudioStreamPlayer2D</code> fyrir árekstra eða tónlist.</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Hraði:</strong> Látðu boltann fara hraðar í hvert skipti sem hann hittir spaða.</li>
+                    <li><strong>Útlit:</strong> Breyttu litum, bættu við öðruvísi spöðum eða "Particle Effects".</li>
+                </ul>
+                
+                <h2 style="margin-bottom: 1.2rem;">DEILA LEIKNUM (EXPORT)</h2>
+                <p style="margin-bottom: 1rem;">Viltu sýna vinum þínum leikinn? Hér er hvernig þú býrð til vefútgáfu:</p>
+                <ol style="padding-left: 2rem;">
+                    <li style="margin-bottom: 0.5rem;">Farðu í <strong>Project -> Export</strong> og veldu <strong>Web</strong> (fyrir vafra).</li>
+                    <li style="margin-bottom: 0.5rem;">Ef þú færð villu, smelltu á <strong>Manage Export Templates</strong> og sæktu þau.</li>
+                    <li>Smelltu á <strong>Export Project</strong> og vistaðu <code>index.html</code> í nýja möppu.</li>
                 </ol>
-                <p class="blink" style="margin-top: 2rem; text-align: center;">GAME OVER</p>
-                <p class="centered"><a href="index.html">Til baka í valmynd</a></p>
+
+                <p class="blink" style="margin-top: 2.5rem; margin-bottom: 1.5rem; text-align: center;">GAME OVER</p>
+                
+                <div style="text-align: center; padding-bottom: 2rem;">
+                    <a href="index.html" class="menu-btn">AFTUR Í VALMYND</a>
+                </div>
             </div>
         </section>
 
